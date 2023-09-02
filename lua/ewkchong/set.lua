@@ -18,8 +18,6 @@ vim.opt.scrolloff = 8
 
 vim.opt.updatetime = 50
 
-vim.opt.colorcolumn = "110"
-
 vim.opt.number = true
 vim.opt.relativenumber = true
 
