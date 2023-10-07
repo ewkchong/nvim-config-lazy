@@ -33,7 +33,7 @@ local plugins = {
 			}
 		end
 	},
-	{ 'nvim-treesitter/nvim-treesitter',        build = ':TSUpdate' },
+	{ 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate', lazy=false },
 	{ 'nvim-treesitter/nvim-treesitter-context' },
 	{ 'nvim-treesitter/playground' },
 	{ "tpope/vim-fugitive" },
@@ -92,10 +92,34 @@ local plugins = {
 		event = "InsertEnter",
 		opts = {} -- this is equalent to setup({}) function
 	},
+	-- {
+	-- 	'ggandor/leap.nvim',
+	-- 	dependencies = { 'tpope/vim-repeat' }
+	-- },
 	{
-		'ggandor/leap.nvim',
-		dependencies = { 'tpope/vim-repeat' }
-	}
+		"folke/flash.nvim",
+		event = "VeryLazy",
+		---@type Flash.Config
+		opts = {},
+		-- stylua: ignore
+		keys = {
+			{ "s", mode = { "n", "o", "x" }, function() require("flash").jump() end, desc = "Flash" },
+			{ "S", mode = { "n", "o", "x" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+			{ "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+			{ "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+			{ "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+		  },
+	},
+	{
+		"kylechui/nvim-surround",
+		version = "*", -- Use for stability; omit to use `main` branch for the latest features
+		event = "VeryLazy",
+		config = function()
+			require("nvim-surround").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
+		end
+}
 }
 
 require('lazy').setup(plugins, {})
@@ -112,5 +136,6 @@ require('plugins/nvim-tree')
 require('plugins/telescope')
 require('plugins/treesitter')
 require('plugins/colors')
+require('plugins/trouble')
 
-require('leap').add_default_mappings()
+-- require('leap').add_default_mappings()
