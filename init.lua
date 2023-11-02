@@ -37,6 +37,7 @@ local plugins = {
 	{ 'nvim-treesitter/nvim-treesitter-context' },
 	{ 'nvim-treesitter/playground' },
 	{ "tpope/vim-fugitive" },
+	{ "mfussenegger/nvim-jdtls" },
 	{
 		'VonHeikemen/lsp-zero.nvim',
 		branch = 'v1.x',
@@ -119,7 +120,8 @@ local plugins = {
 				-- Configuration here, or leave empty to use defaults
 			})
 		end
-}
+	},
+	{ "github/copilot.vim" }
 }
 
 require('lazy').setup(plugins, {})
