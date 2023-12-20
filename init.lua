@@ -36,6 +36,7 @@ local plugins = {
 	{ 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate', lazy=false },
 	{ 'nvim-treesitter/nvim-treesitter-context' },
 	{ 'nvim-treesitter/playground' },
+	{ 'nvim-treesitter/nvim-treesitter-textobjects' },
 	{ "tpope/vim-fugitive" },
 	{ "mfussenegger/nvim-jdtls" },
 	{
@@ -121,7 +122,8 @@ local plugins = {
 			})
 		end
 	},
-	{ "github/copilot.vim" }
+	{ "github/copilot.vim" },
+	{ "lervag/vimtex" }
 }
 
 require('lazy').setup(plugins, {})
@@ -139,5 +141,6 @@ require('plugins/telescope')
 require('plugins/treesitter')
 require('plugins/colors')
 require('plugins/trouble')
+require('plugins/vimtex')
 
 -- require('leap').add_default_mappings()

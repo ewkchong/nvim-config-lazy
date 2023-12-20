@@ -21,9 +21,9 @@ lsp.configure('lua-language-server', {
 })
 
 local lspconfig = require('lspconfig')
-local jdtls_opts = require('plugins.java')
-
-lspconfig['jdtls'].setup(jdtls_opts)
+-- local jdtls_opts = require('plugins.java')
+--
+-- lspconfig['jdtls'].setup(jdtls_opts)
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
