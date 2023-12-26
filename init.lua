@@ -17,6 +17,11 @@ local plugins = {
 	{ 'rose-pine/neovim',             name = 'rose-pine' },
 	{ 'echasnovski/mini.nvim' },
 	{ 'echasnovski/mini.colors' },
+	{ 'NvChad/nvim-colorizer.lua',
+		config = function()
+			require('colorizer').setup()
+		end
+	},
 	{
 		"folke/trouble.nvim",
 		config = function()
@@ -59,6 +64,7 @@ local plugins = {
 						'confirm_done',
 						cmp_autopairs.on_confirm_done()
 					)
+					require("cmp").setup(require "plugins.cmp")
 				end
 			},         -- Required
 			{ 'hrsh7th/cmp-nvim-lsp' }, -- Required
@@ -66,7 +72,6 @@ local plugins = {
 			{ 'hrsh7th/cmp-path' }, -- Optional
 			{ 'saadparwaiz1/cmp_luasnip' }, -- Optional
 			{ 'hrsh7th/cmp-nvim-lua' }, -- Optional
-
 			-- Snippets
 			{ 'L3MON4D3/LuaSnip' }, -- Required
 			{ 'rafamadriz/friendly-snippets' }, -- Optional
@@ -123,7 +128,7 @@ local plugins = {
 		end
 	},
 	{ "github/copilot.vim" },
-	{ "lervag/vimtex" }
+	{ "lervag/vimtex" },
 }
 
 require('lazy').setup(plugins, {})
