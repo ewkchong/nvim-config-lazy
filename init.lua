@@ -12,92 +12,101 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-	{ 'nvim-lua/plenary.nvim' },
-	{ 'nvim-telescope/telescope.nvim' },
-	{ 'rose-pine/neovim',             name = 'rose-pine' },
-	{ 'echasnovski/mini.nvim' },
-	{ 'echasnovski/mini.colors' },
-	{ 'NvChad/nvim-colorizer.lua',
+	{ "nvim-lua/plenary.nvim" },
+	{ "nvim-telescope/telescope.nvim" },
+	{ "rose-pine/neovim",             name = "rose-pine" },
+	{ "echasnovski/mini.nvim" },
+	{ "echasnovski/mini.colors" },
+	{
+		"NvChad/nvim-colorizer.lua",
 		config = function()
-			require('colorizer').setup()
-		end
+			require("colorizer").setup()
+		end,
 	},
 	{
 		"folke/trouble.nvim",
 		config = function()
-			require("trouble").setup {
+			require("trouble").setup({
 				icons = true,
-			}
-		end
+			})
+		end,
 	},
 	{
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
-			require("todo-comments").setup {
-			}
-		end
+			require("todo-comments").setup({})
+		end,
 	},
-	{ 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate', lazy=false },
-	{ 'nvim-treesitter/nvim-treesitter-context' },
-	{ 'nvim-treesitter/playground' },
-	{ 'nvim-treesitter/nvim-treesitter-textobjects' },
+	{ "nvim-treesitter/nvim-treesitter",            build = ":TSUpdate", lazy = false },
+	{ "nvim-treesitter/nvim-treesitter-context" },
+	{ "nvim-treesitter/playground" },
+	{ "nvim-treesitter/nvim-treesitter-textobjects" },
 	{ "tpope/vim-fugitive" },
 	{ "mfussenegger/nvim-jdtls" },
 	{
-		'VonHeikemen/lsp-zero.nvim',
-		branch = 'v1.x',
+		"nvimtools/none-ls.nvim",
+		config = function()
+			local null_ls = require("null-ls")
+			null_ls.setup({
+				sources = {
+					null_ls.builtins.formatting.stylua,
+				},
+			})
+		end,
+	},
+	{
+		"VonHeikemen/lsp-zero.nvim",
+		branch = "v1.x",
 		dependencies = {
 			-- LSP Support
-			{ 'neovim/nvim-lspconfig' }, -- Required
-			{ 'williamboman/mason.nvim' }, -- Optional
-			{ 'williamboman/mason-lspconfig.nvim' }, -- Optional
+			{ "neovim/nvim-lspconfig" }, -- Required
+			{ "williamboman/mason.nvim" }, -- Optional
+			{ "williamboman/mason-lspconfig.nvim" }, -- Optional
 
 			-- Autocompletion
 			{
-				'hrsh7th/nvim-cmp',
+				"hrsh7th/nvim-cmp",
 				config = function()
 					-- If you want insert `(` after select function or method item
-					local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-					local cmp = require('cmp')
-					cmp.event:on(
-						'confirm_done',
-						cmp_autopairs.on_confirm_done()
-					)
-					require("cmp").setup(require "plugins.cmp")
-				end
-			},         -- Required
-			{ 'hrsh7th/cmp-nvim-lsp' }, -- Required
-			{ 'hrsh7th/cmp-buffer' }, -- Optional
-			{ 'hrsh7th/cmp-path' }, -- Optional
-			{ 'saadparwaiz1/cmp_luasnip' }, -- Optional
-			{ 'hrsh7th/cmp-nvim-lua' }, -- Optional
+					local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+					local cmp = require("cmp")
+					cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+					require("cmp").setup(require("plugins.cmp"))
+				end,
+			},             -- Required
+			{ "onsails/lspkind.nvim" }, -- Optional
+			{ "hrsh7th/cmp-nvim-lsp" }, -- Required
+			{ "hrsh7th/cmp-buffer" }, -- Optional
+			{ "hrsh7th/cmp-path" }, -- Optional
+			{ "saadparwaiz1/cmp_luasnip" }, -- Optional
+			{ "hrsh7th/cmp-nvim-lua" }, -- Optional
 			-- Snippets
-			{ 'L3MON4D3/LuaSnip' }, -- Required
-			{ 'rafamadriz/friendly-snippets' }, -- Optional
-		}
-	},
-	{
-		'numToStr/Comment.nvim',
-		config = function()
-			require('Comment').setup()
-		end
-	},
-	{
-		'nvim-lualine/lualine.nvim',
-		dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true }
-	},
-	{
-		'nvim-tree/nvim-tree.lua',
-		dependencies = {
-			'nvim-tree/nvim-web-devicons', -- optional
+			{ "L3MON4D3/LuaSnip" }, -- Required
+			{ "rafamadriz/friendly-snippets" }, -- Optional
 		},
 	},
-	{ 'ThePrimeagen/harpoon' },
 	{
-		'windwp/nvim-autopairs',
+		"numToStr/Comment.nvim",
+		config = function()
+			require("Comment").setup()
+		end,
+	},
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons", lazy = true },
+	},
+	{
+		"nvim-tree/nvim-tree.lua",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons", -- optional
+		},
+	},
+	{ "ThePrimeagen/harpoon" },
+	{
+		"windwp/nvim-autopairs",
 		event = "InsertEnter",
-		opts = {} -- this is equalent to setup({}) function
+		opts = {}, -- this is equalent to setup({}) function
 	},
 	-- {
 	-- 	'ggandor/leap.nvim',
@@ -110,12 +119,12 @@ local plugins = {
 		opts = {},
 		-- stylua: ignore
 		keys = {
-			{ "s", mode = { "n", "o", "x" }, function() require("flash").jump() end, desc = "Flash" },
-			{ "S", mode = { "n", "o", "x" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-			{ "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-			{ "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-			{ "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
-		  },
+			{ "s",     mode = { "n", "o", "x" }, function() require("flash").jump() end,              desc = "Flash" },
+			{ "S",     mode = { "n", "o", "x" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+			{ "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+			{ "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+			{ "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
+		},
 	},
 	{
 		"kylechui/nvim-surround",
@@ -125,27 +134,27 @@ local plugins = {
 			require("nvim-surround").setup({
 				-- Configuration here, or leave empty to use defaults
 			})
-		end
+		end,
 	},
 	{ "github/copilot.vim" },
 	{ "lervag/vimtex" },
 }
 
-require('lazy').setup(plugins, {})
+require("lazy").setup(plugins, {})
 
-require('ewkchong/remap')
-require('ewkchong/set')
+require("ewkchong/remap")
+require("ewkchong/set")
 
-require('plugins/fugitive')
-require('plugins/harpoon')
-require('plugins/lsp')
-require('plugins/lualine')
-require('plugins/luasnip')
-require('plugins/nvim-tree')
-require('plugins/telescope')
-require('plugins/treesitter')
-require('plugins/colors')
-require('plugins/trouble')
-require('plugins/vimtex')
+require("plugins/fugitive")
+require("plugins/harpoon")
+require("plugins/lsp")
+require("plugins/lualine")
+require("plugins/luasnip")
+require("plugins/nvim-tree")
+require("plugins/telescope")
+require("plugins/treesitter")
+require("plugins/colors")
+require("plugins/trouble")
+require("plugins/vimtex")
 
 -- require('leap').add_default_mappings()

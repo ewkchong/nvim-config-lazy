@@ -1,4 +1,4 @@
-local icon_map = {
+local kind_icons = {
 	Namespace = "󰌗",
 	Text = "󰉿",
 	Method = "󰆧",
@@ -55,6 +55,8 @@ local function border(hl_name)
 	}
 end
 
+local lspkind = require("lspkind")
+
 local options = {
 	window = {
 		completion = {
@@ -69,13 +71,10 @@ local options = {
 	},
 	formatting = {
 		fields = { "abbr", "kind", "menu" },
-		format = function(_, item)
-			local icon = icon_map[item.kind]
-			icon = " " .. icon .. " "
-			item.kind = string.format("%s %s", icon, item.kind)
-			return item
-		end
-	}
+		format = lspkind.cmp_format({
+			mode = "symbol+text",
+		}),
+	},
 }
 
 -- options.window.completion.border = border "CmpBorder"
