@@ -23,3 +23,5 @@ vim.opt.relativenumber = true
 
 vim.g.mapleader = " "
 
+vim.opt.fillchars = {eob = " "}
+

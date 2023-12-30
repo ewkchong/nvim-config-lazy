@@ -138,6 +138,13 @@ local plugins = {
 	},
 	{ "github/copilot.vim" },
 	{ "lervag/vimtex" },
+	{
+		"goolord/alpha-nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("alpha").setup(require("plugins/dashboard").config)
+		end,
+	},
 }
 
 require("lazy").setup(plugins, {})
