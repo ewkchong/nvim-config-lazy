@@ -26,19 +26,19 @@ function ColorMyPencils(color)
 
 	-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none", force = true })
 
-	vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none"})
+	vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none", fg = "#403d52" })
 
-	-- vim.api.nvim_set_hl(0, "TelescopePromptNormal", { bg = "none" })
-	-- vim.api.nvim_set_hl(0, "TelescopeResultsNormal", { bg = "none" })
-	-- vim.api.nvim_set_hl(0, "TelescopePreviewNormal", { bg = "none" })
+	vim.api.nvim_set_hl(0, "TelescopePromptNormal", { bg = "none", fg = "#908caa" })
+	vim.api.nvim_set_hl(0, "TelescopeResultsNormal", { bg = "none", fg = "#908caa" })
+	vim.api.nvim_set_hl(0, "TelescopePreviewNormal", { bg = "none", fg = "#908caa" })
 	--
-	-- vim.api.nvim_set_hl(0, "TelescopePromptBorder", { bg = "none" })
-	-- vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { bg = "none" })
-	-- vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { bg = "none" })
+	vim.api.nvim_set_hl(0, "TelescopePromptBorder", { bg = "none", fg = "#403d52" })
+	vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { bg = "none", fg = "#403d52" })
+	vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { bg = "none", fg = "#403d52"  })
 	--
-	-- vim.api.nvim_set_hl(0, "TelescopePromptTitle", { bg = "none" })
-	-- vim.api.nvim_set_hl(0, "TelescopePreviewTitle", { bg = "none" })
-	-- vim.api.nvim_set_hl(0, "TelescopeResultsTitle", { bg = "none" })
+	vim.api.nvim_set_hl(0, "TelescopePromptTitle", { bg = "none", fg = "#908caa" })
+	vim.api.nvim_set_hl(0, "TelescopePreviewTitle", { bg = "none", fg = "#908caa" })
+	vim.api.nvim_set_hl(0, "TelescopeResultsTitle", { bg = "none", fg = "#908caa"})
 end
 
 ColorMyPencils()
