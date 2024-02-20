@@ -1,6 +1,7 @@
 require('Comment').setup()
 
---  NOTE: this removes the auto-comment when adding a line under an existing comment
+
+-- --  NOTE: this removes the auto-comment when adding a line under an existing comment
 vim.cmd([[
   augroup RemoveFormatOptions
     autocmd!

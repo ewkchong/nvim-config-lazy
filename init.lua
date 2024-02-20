@@ -50,7 +50,6 @@ local plugins = {
 			local null_ls = require("null-ls")
 			null_ls.setup({
 				sources = {
-					null_ls.builtins.formatting.stylua,
 				},
 			})
 		end,
@@ -102,7 +101,7 @@ local plugins = {
 			"nvim-tree/nvim-web-devicons", -- optional
 		},
 	},
-	{ "ThePrimeagen/harpoon" },
+	-- { "ThePrimeagen/harpoon" },
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
@@ -145,6 +144,17 @@ local plugins = {
 			require("alpha").setup(require("plugins/dashboard").config)
 		end,
 	},
+	{
+		"windwp/nvim-ts-autotag",
+		config = function()
+			require("nvim-ts-autotag").setup{
+				autotag = {
+					enable = true,
+				}
+			}
+		end,
+	},
+	{ "wincent/ferret" },
 }
 
 require("lazy").setup(plugins, {})
@@ -163,5 +173,6 @@ require("plugins/treesitter")
 require("plugins/colors")
 require("plugins/trouble")
 require("plugins/vimtex")
+-- require("plugins/ferret")
 
 -- require('leap').add_default_mappings()

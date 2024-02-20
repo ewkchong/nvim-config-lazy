@@ -19,9 +19,12 @@ vim.opt.scrolloff = 8
 vim.opt.updatetime = 50
 
 vim.opt.number = true
-vim.opt.relativenumber = true
+-- vim.opt.relativenumber = true
 
 vim.g.mapleader = " "
 
+--  NOTE: to remove the gutter tildes at the end of the file
 vim.opt.fillchars = {eob = " "}
 
+--  NOTE: to stop auto-comment when adding a line under an existing comment
+vim.opt.formatoptions:remove { "c", "r", "o" }

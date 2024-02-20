@@ -19,3 +19,6 @@ vim.keymap.set("n", "<C-j>", ":wincmd j<CR>")
 vim.keymap.set("n", "<C-k>", ":wincmd k<CR>")
 
 vim.keymap.set("n", "<C-t>", ":ToggleTerm<CR>")
+
+vim.keymap.set("n", "<tab>", ":bnext<CR>")
+vim.keymap.set("n", "<s-tab>", ":bprev<CR>")

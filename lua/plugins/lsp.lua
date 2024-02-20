@@ -10,7 +10,7 @@ lsp.ensure_installed({
 })
 
 -- Fix Undefined global 'vim'
-lsp.configure('lua-language-server', {
+lsp.configure('lua_ls', {
 	settings = {
 		Lua = {
 			diagnostics = {
@@ -19,11 +19,6 @@ lsp.configure('lua-language-server', {
 		}
 	}
 })
-
-local lspconfig = require('lspconfig')
--- local jdtls_opts = require('plugins.java')
---
--- lspconfig['jdtls'].setup(jdtls_opts)
 
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
