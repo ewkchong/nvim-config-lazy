@@ -1,7 +1,5 @@
 -- vim.opt.guicursor = ""
-
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
+vim.opt.tabstop = 4 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = false
 
@@ -27,4 +25,11 @@ vim.g.mapleader = " "
 vim.opt.fillchars = {eob = " "}
 
 --  NOTE: to stop auto-comment when adding a line under an existing comment
-vim.opt.formatoptions:remove { "c", "r", "o" }
+vim.opt.formatoptions:remove("c")
+vim.opt.formatoptions:remove("r")
+vim.opt.formatoptions:remove("o")
+
+vim.opt.breakindent = true
+
+vim.opt.cursorline = true
+

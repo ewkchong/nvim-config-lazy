@@ -12,6 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
+	-- { "tpope/vim-sleuth" },
 	{ "nvim-lua/plenary.nvim" },
 	{ "nvim-telescope/telescope.nvim" },
 	{ "rose-pine/neovim",             name = "rose-pine" },
@@ -155,12 +156,26 @@ local plugins = {
 		end,
 	},
 	{ "wincent/ferret" },
+	{
+		"folke/which-key.nvim",
+		event = 'VeryLazy',
+		config = function()
+			require('which-key').setup()
+		end
+	},
+	{
+		"iamcco/markdown-preview.nvim",
+		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+		ft = { "markdown" },
+		build = function() vim.fn["mkdp#util#install"]() end,
+	}
 }
 
 require("lazy").setup(plugins, {})
 
 require("ewkchong/remap")
 require("ewkchong/set")
+require("ewkchong/autocmd")
 
 require("plugins/fugitive")
 require("plugins/harpoon")
